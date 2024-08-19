@@ -3,13 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { DeckDialogForm, DeleteDialogForm } from '@/components/forms'
 import { Actions } from '@/components/ui/layout-components/actions'
-import {
-  Button,
-  TableBody,
-  TableContainer,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/primitives'
+import { Button, Tbody, Table, Thead, Tr } from '@/components/ui/primitives'
 import { User } from '@/services'
 import { Deck } from '@/services/decks/deck.types'
 import { DIALOG_ACTION, DIALOG_ENTITY, VARIANT } from '@/shared/enums'
@@ -45,11 +39,11 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
     updateSearchParam({ currentPage: 1, orderBy })
   }
 
-  const tableRows = decks.map(el => {
+  const Trs = decks.map(el => {
     const { cardsCount, cover, deckPath, isAuthor, learnDeckPath, updated } = processDeckData(el)
 
     return (
-      <TableRow key={el.id}>
+      <Tr key={el.id}>
         <PositionCell entity={'Deck'} image={cover}>
           <Button
             as={Link}
@@ -74,14 +68,14 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
             variant={isAuthor ? VARIANT.ALL : VARIANT.ONLY_LEARN}
           />
         </PositionCell>
-      </TableRow>
+      </Tr>
     )
   })
 
   return (
-    <TableContainer style={{ maxWidth: '1280px' }}>
-      <TableHeader>
-        <TableRow>
+    <Table style={{ maxWidth: '1280px' }}>
+      <Thead>
+        <Tr>
           <HeaderCell
             className={s.column1}
             content={'Name'}
@@ -111,9 +105,9 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
             sortId={sortId}
           />
           <HeaderCell className={s.column5} content={'Actions'} sortable={false} />
-        </TableRow>
-      </TableHeader>
-      <TableBody>{tableRows}</TableBody>
+        </Tr>
+      </Thead>
+      <Tbody>{Trs}</Tbody>
       {showEditDeckDialog && (
         <DeckDialogForm
           action={DIALOG_ACTION.UPDATE}
@@ -129,6 +123,6 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
         onOpenChange={setShowDeleteDeckDialog}
         open={showDeleteDeckDialog}
       />
-    </TableContainer>
+    </Table>
   )
 }

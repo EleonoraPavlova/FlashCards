@@ -77,7 +77,7 @@ export const Actions = ({
   return isMobile ? (
     <FlexContainer fw={'wrap'}>
       {getActionButtons(actionButtons, variant).map(el => (
-        <PositionCell className={cn.tableCell} key={el.label}>
+        <PositionCell className={cn.Td} key={el.label}>
           <Button
             as={el.path ? Link : 'button'}
             className={cn.buttonMobile}

@@ -9,5 +9,5 @@ export const cn = {
   favorite: clsx(s.action, s.favorite),
   favoriteMobile: clsx(s.mobile, s.favorite),
   mobile: s.mobile,
-  tableCell: s.tableCell,
+  Td: s.Td,
 }

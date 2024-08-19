@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 
 import { ArrowUp } from '@/assets/icons'
-import { TableHeaderCell } from '@/components/ui/primitives'
+import { Th } from '@/components/ui/primitives'
 import { ORDER } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { getOrderByString } from '@/shared/utils'
@@ -15,9 +15,9 @@ type Props = {
   onSort?: (orderBy: string, sortId: string) => void
   sortId?: string
   sortable?: boolean
-} & ComponentPropsWithoutRef<typeof TableHeaderCell>
+} & ComponentPropsWithoutRef<typeof Th>
 
-type HeaderCellRef = ElementRef<typeof TableHeaderCell>
+type HeaderCellRef = ElementRef<typeof Th>
 
 export const HeaderCell = forwardRef<HeaderCellRef, Props>(
   ({ children, className, content, id, onSort, sortId, sortable = true, ...rest }, ref) => {
@@ -38,12 +38,12 @@ export const HeaderCell = forwardRef<HeaderCellRef, Props>(
     }
 
     return (
-      <TableHeaderCell {...rest} className={cn} onClick={sortHandler} ref={ref}>
+      <Th {...rest} className={cn} onClick={sortHandler} ref={ref}>
         <FlexContainer gap={'6px'}>
           {content} {children}
           {isSortable && <ArrowUp className={clsx(s.sort, order === ORDER.DESC && s.desc)} />}
         </FlexContainer>
-      </TableHeaderCell>
+      </Th>
     )
   }
 )

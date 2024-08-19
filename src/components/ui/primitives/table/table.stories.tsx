@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import {
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-} from '@/components/ui/primitives/table'
+import { Tbody, Td, Table as TableComponent, Thead, Th, Tr } from '@/components/ui/primitives/table'
 
 const mockTableData = [
   {
@@ -42,39 +35,39 @@ const mockTableData = [
 
 const meta = {
   argTypes: {},
-  component: TableContainer,
+  component: TableComponent,
   tags: ['autodocs'],
   title: 'Primitives/Table',
-} satisfies Meta<typeof TableContainer>
+} satisfies Meta<typeof TableComponent>
 
 type Story = StoryObj<typeof meta>
 export default meta
 
 const mockData = () => {
   return mockTableData.map(el => (
-    <TableRow key={el.id}>
-      <TableCell>{el.name}</TableCell>
-      <TableCell>{el.cards}</TableCell>
-      <TableCell>{el.createdBy}</TableCell>
-      <TableCell>{el.lastUpdated}</TableCell>
-    </TableRow>
+    <Tr key={el.id}>
+      <Td>{el.name}</Td>
+      <Td>{el.cards}</Td>
+      <Td>{el.createdBy}</Td>
+      <Td>{el.lastUpdated}</Td>
+    </Tr>
   ))
 }
 
 export const Table: Story = {
   render: () => {
     return (
-      <TableContainer>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell>Name</TableHeaderCell>
-            <TableHeaderCell>Cards</TableHeaderCell>
-            <TableHeaderCell>Last Updated</TableHeaderCell>
-            <TableHeaderCell>Created by</TableHeaderCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>{mockData()}</TableBody>
-      </TableContainer>
+      <TableComponent>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Cards</Th>
+            <Th>Last Updated</Th>
+            <Th>Created by</Th>
+          </Tr>
+        </Thead>
+        <Tbody>{mockData()}</Tbody>
+      </TableComponent>
     )
   },
 }
