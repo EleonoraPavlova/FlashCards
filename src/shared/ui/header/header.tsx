@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { Card } from '@/components/ui/primitives'
 import clsx from 'clsx'
 
-import s from '@/shared/ui/header/header.module.scss'
+import s from './header.module.scss'
 
 type HeaderProps = ComponentPropsWithoutRef<typeof Card>
 

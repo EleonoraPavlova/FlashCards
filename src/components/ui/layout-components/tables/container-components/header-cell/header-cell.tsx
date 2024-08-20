@@ -7,7 +7,7 @@ import { FlexContainer } from '@/shared/ui/flex-container'
 import { getOrderByString } from '@/shared/utils'
 import clsx from 'clsx'
 
-import s from '@/components/ui/layout-components/tables/container-components/header-cell/header-cell.module.scss'
+import s from './header-cell.module.scss'
 
 type Props = {
   content: string

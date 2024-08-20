@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { CardDialogForm, DeleteDialogForm } from '@/components/forms'
 import { Actions } from '@/components/ui/layout-components/actions'
-import { Grade, Tbody, Table, Thead, Tr } from '@/components/ui/primitives'
+import { Grade, Table, Tbody, Thead, Tr } from '@/components/ui/primitives'
 import { Card } from '@/services/cards/cards.types'
 import { DIALOG_ACTION, DIALOG_ENTITY, VARIANT } from '@/shared/enums'
 import { useDeckTableData, useSearchParamUpdater } from '@/shared/hooks'

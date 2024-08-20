@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Tbody, Td, Table as TableComponent, Thead, Th, Tr } from '@/components/ui/primitives/table'
+import { Table as TableComponent, Tbody, Td, Th, Thead, Tr } from '@/components/ui/primitives/table'
 
 const mockTableData = [
   {

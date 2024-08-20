@@ -21,6 +21,8 @@ export const CardsHeader = ({ isAuth, userData, ...props }: CardsHeaderProps) =>
 
   const isMobile = currentScreenWidth <= breakpoint
 
+  console.log('isMobile', isMobile)
+
   return (
     <Header {...props}>
       <FlexContainer jc={'space-between'} pd={'0 20px'}>

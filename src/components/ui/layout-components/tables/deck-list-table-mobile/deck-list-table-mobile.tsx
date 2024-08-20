@@ -30,7 +30,7 @@ export const DeckListTableMobile = ({ decks, user }: DeckListTableMobileProps) =
   } = useDeckListData(decks, user)
 
   return (
-    <Table className={s.Table}>
+    <Table className={s.table}>
       <FlexContainer fw={'wrap'} gap={'24px'} jc={'space-around'}>
         {decks.map(el => {
           const { cardsCount, cover, deckPath, isAuthor, learnDeckPath, updated } =

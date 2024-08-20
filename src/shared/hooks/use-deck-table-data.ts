@@ -4,6 +4,8 @@ import dummyCover from '@/assets/webp/dummy-cover.webp'
 import { Card } from '@/services'
 import { convertToDDMMYYYY } from '@/shared/utils/convert-date-ddmmyyyy'
 
+import { truncateString } from '../utils'
+
 export const useDeckTableData = (cards: Card[]) => {
   const [cardId, setCardId] = useState('')
   const [showUpdateCardDialogForm, setShowUpdateCardDialogForm] = useState(false)
@@ -16,9 +18,16 @@ export const useDeckTableData = (cards: Card[]) => {
     const answerCover = el.answerImg ?? dummyCover
     const updated = convertToDDMMYYYY(el.updated)
 
+    const MAX_LENGTH = 50
+
+    const truncatedQuestion = truncateString(el.question, MAX_LENGTH)
+    const truncatedAnswer = truncateString(el.answer, MAX_LENGTH)
+
     return {
       answerCover,
       questionCover,
+      truncatedAnswer,
+      truncatedQuestion,
       updated,
     }
   }

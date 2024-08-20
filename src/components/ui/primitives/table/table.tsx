@@ -1,10 +1,9 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import { Typography } from '@/components/ui/primitives'
 import clsx from 'clsx'
 
 import s from './table.module.scss'
-
-import { Typography } from '@/components/ui/primitives'
 
 type TableProps = {
   label?: string
@@ -95,4 +94,4 @@ const Td = forwardRef<TdRef, TdProps>((props, ref) => {
   )
 })
 
-export { Tbody, Td, Table, Thead, Th, Tr }
+export { Table, Tbody, Td, Th, Thead, Tr }
