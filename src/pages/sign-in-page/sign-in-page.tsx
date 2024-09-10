@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { LoginFormValues, SignInForm } from '@/components/forms'
 import { useLoginMutation } from '@/services'
 import { PATH } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
+import { getErrorMessageData } from '@/shared/utils'
 
 export const SignInPage = () => {
   const navigate = useNavigate()
@@ -15,6 +17,12 @@ export const SignInPage = () => {
       .unwrap()
       .then(() => {
         navigate(PATH.ROOT)
+        toast.success('You have successfully logged in')
+      })
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
       })
   }
 

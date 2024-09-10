@@ -4,7 +4,6 @@ import { Link, generatePath, useParams } from 'react-router-dom'
 import { ArrowBackOutline } from '@/assets/icons'
 import { LearnCard } from '@/components/ui/layout-components'
 import { Button } from '@/components/ui/primitives'
-import { cn } from '@/pages/card-page/card-page.styles'
 import {
   GetRandomCardToLearnResponse,
   useGetDeckQuery,
@@ -14,6 +13,8 @@ import {
 import { PATH } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
+
+import { cn } from './card-page.styles'
 
 export const CardPage = () => {
   const { deckId } = useParams()

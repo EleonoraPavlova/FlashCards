@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 
 import { EmailOk } from '@/assets/icons'
-import { cn } from '@/components/ui/layout-components/confirm-email/confirm-email.styles'
 import { Button, Card, Typography } from '@/components/ui/primitives'
 import { PATH } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
+
+import { cn } from './confirm-email.styles'
 
 export const ConfirmEmail = () => {
   return (
@@ -15,7 +16,8 @@ export const ConfirmEmail = () => {
           <EmailOk />
         </FlexContainer>
       </FlexContainer>
-      <Button as={Link} path={PATH.SIGN_IN}>
+      <Button as={Link} path={PATH.ROOT}>
+        {/* no redirect ?? */}
         {'Back to home page'}
       </Button>
     </Card>

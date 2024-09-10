@@ -16,7 +16,7 @@ type Props = {
 export const UserProfile = ({ isAuth, userData }: Props) => {
   if (!isAuth || !userData) {
     return (
-      <Button as={Link} to={PATH.SIGN_IN} variant={'secondary'}>
+      <Button as={Link} to={PATH.SIGN_IN} variant={'primary'}>
         Sign In
       </Button>
     )

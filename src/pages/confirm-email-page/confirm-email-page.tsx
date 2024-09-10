@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { ConfirmEmail } from '@/components/ui/layout-components/confirm-email'
 import { LinkExpired } from '@/components/ui/layout-components/link-expired'
 import { useVerifyEmailMutation } from '@/services'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
+import { getErrorMessageData } from '@/shared/utils'
 
 export const ConfirmEmailPage = () => {
   const { token } = useParams()
@@ -16,14 +18,13 @@ export const ConfirmEmailPage = () => {
     if (token) {
       verifyEmail({ code: token })
         .unwrap()
-        .then(() => console.log('Email verified successfully'))
-        .catch(error => {
-          if (error.status === 400) {
-            console.log('Email has already been verified', error.status)
-          }
-          if (error.status === 404) {
-            console.log('User not found', error.status)
-          }
+        .then(() => {
+          toast.success('Email verified successfully')
+        })
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
         })
     }
   }, [token])

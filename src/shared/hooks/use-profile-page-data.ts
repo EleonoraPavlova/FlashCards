@@ -10,6 +10,8 @@ import {
 } from '@/services'
 import { PATH } from '@/shared/enums'
 
+import { getErrorMessageData } from '../utils'
+
 export const useProfilePageData = () => {
   const { data: user, isFetching } = useMeQuery()
   const [isEditMode, setIsEditMode] = useState(false)
@@ -21,12 +23,14 @@ export const useProfilePageData = () => {
   const navigate = useNavigate()
 
   const logoutHandler = () => {
-    try {
-      logout()
-      toast.success('You logout successfully')
-    } catch {
-      toast.error('Something went wrong') //todo: doesn't work offline mode
-    }
+    logout()
+      .unwrap()
+      .then(() => toast.success('You logout successfully'))
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+      })
   }
 
   const uploadHandler = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +64,6 @@ export const useProfilePageData = () => {
   }
 
   const cancelPersonalInfoHandler = () => {
-    // e.preventDefault()
     setIsEditMode(false)
   }
 

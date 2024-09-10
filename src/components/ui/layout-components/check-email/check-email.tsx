@@ -10,6 +10,7 @@ import { useDisableOnLoading } from '@/shared/hooks'
 import { codeVerifySchema } from '@/shared/schemes'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { ControlledTextField } from '@/shared/ui/form-components/controlled-text-field'
+import { getErrorMessageData } from '@/shared/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -46,7 +47,11 @@ export const CheckEmail = ({ email, forRecoveryPassword }: CheckEmailProps) => {
         navigate(PATH.ROOT)
         toast.success('Verification was successly')
       })
-      .catch(error => toast.error('Verification failed', error.status))
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+      })
   })
 
   const disabled = useDisableOnLoading(isLoading)
