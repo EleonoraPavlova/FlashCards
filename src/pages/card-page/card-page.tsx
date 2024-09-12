@@ -36,13 +36,13 @@ export const CardPage = () => {
 
   const [saveGrade, { isLoading: isSaveGradeLoading }] = useSaveGradeOfCardMutation()
 
-  const nextQuestionHandler = async (cardId: string, grade: number) => {
-    const result = await saveGrade({ cardId, grade, id: deck?.id ?? '' })
-
-    if (result) {
-      setShowAnswer(false)
-      setCardToLearn(result.data)
-    }
+  const nextQuestionHandler = (cardId: string, grade: number) => {
+    saveGrade({ cardId, grade, id: deck?.id ?? '' })
+      .unwrap()
+      .then(data => {
+        setShowAnswer(false)
+        setCardToLearn(data)
+      })
   }
 
   const isLoad = isDeckFetching || isRandomCardFetching || isSaveGradeLoading

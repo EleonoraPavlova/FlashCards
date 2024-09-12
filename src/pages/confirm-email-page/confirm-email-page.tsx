@@ -7,7 +7,6 @@ import { LinkExpired } from '@/components/ui/layout-components/link-expired'
 import { useVerifyEmailMutation } from '@/services'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
-import { getErrorMessageData } from '@/shared/utils'
 
 export const ConfirmEmailPage = () => {
   const { token } = useParams()
@@ -20,11 +19,6 @@ export const ConfirmEmailPage = () => {
         .unwrap()
         .then(() => {
           toast.success('Email verified successfully')
-        })
-        .catch(e => {
-          const errors = getErrorMessageData(e)
-
-          toast.error(errors as any)
         })
     }
   }, [token])

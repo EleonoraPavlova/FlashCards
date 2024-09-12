@@ -18,9 +18,16 @@ export type CustomerError = {
   status: number
 }
 
+export type FetchError = {
+  error: string
+  status: string
+}
+
 export function getErrorMessageData(error: unknown) {
   if (isNetworkError(error)) {
-    return 'No internet connection. Please check your network and try again'
+    const errorData = error as FetchError
+
+    return `${errorData.error} or you have no  internet connection`
   }
 
   if (isFetchBaseQueryError(error)) {

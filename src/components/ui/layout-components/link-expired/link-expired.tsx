@@ -16,9 +16,8 @@ export const LinkExpired = () => {
           once or it expired due to security reasons
         </Typography>
       </FlexContainer>
-      <Button as={Link} path={PATH.PROFILE} type={'button'}>
-        {/* no redirect ??*/}
-        {'Back to profile'}
+      <Button as={Link} to={PATH.PROFILE} type={'button'}>
+        Back to profile
       </Button>
     </Card>
   )

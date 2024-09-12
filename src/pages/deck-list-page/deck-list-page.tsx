@@ -38,7 +38,6 @@ export const DeckListPage = () => {
   useEffect(() => {
     if (minMax) {
       updateSearchParam({ max: minMax?.max, min: minMax.min })
-
       setSkip(false)
     }
     // 'updateSearchParam' mustn't be added to avoid cyclical dependence
@@ -83,11 +82,15 @@ export const DeckListPage = () => {
           ) : (
             <DeckListTable decks={decks.items} user={user} />
           )}
-          <Pagination
-            currentPage={currentPage}
-            pageSize={itemsPerPage}
-            totalCount={decks.pagination.totalItems}
-          />
+          {decks.items.length ? (
+            <Pagination
+              currentPage={currentPage}
+              pageSize={itemsPerPage}
+              totalCount={decks.pagination.totalItems}
+            />
+          ) : (
+            <Typography variant={'subtitle2'}>No decks</Typography>
+          )}
           <DeckDialogForm onOpenChange={setShowAddDeckDialog} open={showAddDeckDialog} />
         </FlexContainer>
       )}

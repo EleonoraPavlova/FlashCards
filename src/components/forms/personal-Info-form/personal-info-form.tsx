@@ -50,7 +50,7 @@ export const PersonalInfoForm = ({
 
   const formHandler = handleSubmit(data => onSubmit(data))
 
-  const disabled = useDisableOnLoading(isLoading) || !isDirty
+  const disabled = useDisableOnLoading(isLoading || !isDirty)
 
   return (
     <Card className={cn.container}>
