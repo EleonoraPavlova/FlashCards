@@ -16,7 +16,7 @@ import { cardAnswerScheme, cardQuestionScheme } from '@/shared/schemes'
 import { Nullable } from '@/shared/types/common'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { ControlledTextField } from '@/shared/ui/form-components/controlled-text-field'
-import { revokeObjectURL } from '@/shared/utils'
+import { getErrorMessageData, revokeObjectURL } from '@/shared/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -126,28 +126,44 @@ export const CardDialogForm = ({
       createCard({
         ...finalFormData,
         deckId: deckId ?? '',
-      }).then(() => {
-        if (currentPage !== 1) {
-          updateSearchParam({ currentPage: 1 })
-        }
-        setQuestionCover(null)
-        setAnswerCover(null)
-        cancelFormHandler()
-        reset()
       })
+        .unwrap()
+        .then(() => {
+          if (currentPage !== 1) {
+            updateSearchParam({ currentPage: 1 })
+          }
+          setQuestionCover(null)
+          setAnswerCover(null)
+          cancelFormHandler()
+          reset()
+          toast.success('Card was successfully created')
+        })
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
+        })
     } else {
       updateCard({
         ...finalFormData,
         id: card?.id ?? '',
-      }).then(() => {
-        if (currentPage !== 1) {
-          updateSearchParam({ currentPage: 1 })
-        }
-        setQuestionCover(null)
-        setAnswerCover(null)
-        cancelFormHandler()
-        reset()
       })
+        .unwrap()
+        .then(() => {
+          if (currentPage !== 1) {
+            updateSearchParam({ currentPage: 1 })
+          }
+          setQuestionCover(null)
+          setAnswerCover(null)
+          cancelFormHandler()
+          reset()
+          toast.success('Deck was successfully updated')
+        })
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
+        })
     }
   })
 

@@ -1,12 +1,11 @@
 import { ArrowBack } from '@/assets/icons'
 import { Button, Typography } from '@/components/ui/primitives'
 import { DOTS, usePagination } from '@/components/ui/primitives/pagination/hooks/usePagination'
+import { Select } from '@/components/ui/primitives/select'
 import { useSearchParamUpdater } from '@/shared/hooks'
 import clsx from 'clsx'
 
 import s from './pagination.module.scss'
-
-import { Select } from '../select'
 
 type PaginationProps = {
   className?: string

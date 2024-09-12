@@ -1,5 +1,7 @@
 export * from './convert-date-ddmmyyyy'
 export * from './create-uploaded-imageURL'
 export * from './get-action-buttons.utils'
+export * from './get-error'
 export * from './get-order-by-string'
 export * from './revoke-object-url'
+export * from './truncate-string'

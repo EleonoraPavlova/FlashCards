@@ -5,13 +5,14 @@ import { ArrowBackOutline } from '@/assets/icons'
 import { CardDialogForm } from '@/components/forms'
 import { DeckTable, DeckTableMobile, DeckTitle } from '@/components/ui/layout-components'
 import { Button, Pagination, TextField } from '@/components/ui/primitives'
-import { cn } from '@/pages/deck-page/deck-page.styles'
 import { EmptyDeck } from '@/pages/deck-page/empty-deck'
 import { PaginationModel, useGetCardsQuery, useGetDeckQuery, useMeQuery } from '@/services'
 import { PATH, SCREEN_SIZE } from '@/shared/enums'
 import { useCurrentScreenWidth, useSearchParamUpdater } from '@/shared/hooks'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
+
+import { cn } from './deck-page.styles'
 
 export const DeckPage = () => {
   const [showCreateNewCardDialogForm, setShowCreateNewCardDialogForm] = useState(false)
@@ -57,6 +58,9 @@ export const DeckPage = () => {
   const currentScreenWidth = useCurrentScreenWidth()
   const breakpoint = SCREEN_SIZE.TABLET_TINY
   const isTinyScreen = currentScreenWidth <= breakpoint
+  const margin = isTinyScreen ? cn.margin0 : cn.cardControl
+  const fd = isTinyScreen ? 'column' : 'row'
+  const gap = isTinyScreen ? '20px' : '0px'
 
   let isAuthor = false
 
@@ -77,20 +81,29 @@ export const DeckPage = () => {
           <ArrowBackOutline className={cn.icon} />
           Back to Decks List
         </Button>
-        <FlexContainer ai={'start'} jc={'start'}>
+        <FlexContainer ai={'start'} fd={fd} gap={gap} jc={'start'}>
           <DeckTitle deck={deck} isAuthor={isAuthor} learnDeckPath={learnDeckPath} />
           {!isEmpty && (
-            <FlexContainer fd={'column'} gap={'20px'}>
+            <>
               {isAuthor ? (
-                <Button className={cn.cardControl} onClick={setShowCreateNewCardDialogForm}>
+                <Button
+                  className={margin}
+                  fullWidth={isTinyScreen}
+                  onClick={setShowCreateNewCardDialogForm}
+                >
                   Add New Card
                 </Button>
               ) : (
-                <Button as={Link} className={cn.cardControl} to={learnDeckPath}>
+                <Button
+                  as={Link}
+                  className={cn.cardControl}
+                  fullWidth={isTinyScreen}
+                  to={learnDeckPath}
+                >
                   Learn Deck
                 </Button>
               )}
-            </FlexContainer>
+            </>
           )}
         </FlexContainer>
         {isEmpty && <EmptyDeck isAuthor={isAuthor} onClick={setShowCreateNewCardDialogForm} />}

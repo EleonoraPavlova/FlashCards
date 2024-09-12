@@ -1,10 +1,13 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { DialogDescription as Description, Dialog, DialogContent } from '@/components/ui/primitives'
 import { useDeleteCardMutation, useDeleteDeckMutation } from '@/services'
-import { DIALOG_ENTITY } from '@/shared/enums'
+import { DIALOG_ENTITY, PATH } from '@/shared/enums'
 import { useDisableOnLoading } from '@/shared/hooks'
 import { entityIdScheme } from '@/shared/schemes'
+import { getErrorMessageData } from '@/shared/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -32,6 +35,7 @@ export const DeleteDialogForm = ({
   onOpenChange,
   open,
 }: DeleteDialogFormProps) => {
+  const navigate = useNavigate()
   const title = `Delete ${entity}`
 
   const [deleteCard, { isLoading: isLoadingDeleteCard }] = useDeleteCardMutation()
@@ -44,9 +48,30 @@ export const DeleteDialogForm = ({
 
   const formHandler = handleSubmit(() => {
     if (entity === DIALOG_ENTITY.CARD) {
-      deleteCard({ id: entityId }).then(() => cancelFormHandler())
+      deleteCard({ id: entityId })
+        .unwrap()
+        .then(() => {
+          toast.success('Card was successfully deleted')
+          cancelFormHandler()
+        })
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
+        })
     }
-    deleteDeck({ id: entityId }).then(() => cancelFormHandler())
+    deleteDeck({ id: entityId })
+      .unwrap()
+      .then(() => {
+        toast.success('Deck was successfully deleted')
+        cancelFormHandler()
+      })
+      .then(() => navigate(PATH.DECK_LIST))
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+      })
   })
 
   const cancelFormHandler = () => {

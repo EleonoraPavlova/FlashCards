@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { CardDialogForm, DeleteDialogForm } from '@/components/forms'
 import { Actions } from '@/components/ui/layout-components/actions'
-import { Grade, TableBody, TableContainer, TableHeader, TableRow } from '@/components/ui/primitives'
+import { Grade, Table, Tbody, Thead, Tr } from '@/components/ui/primitives'
 import { Card } from '@/services/cards/cards.types'
 import { DIALOG_ACTION, DIALOG_ENTITY, VARIANT } from '@/shared/enums'
 import { useDeckTableData, useSearchParamUpdater } from '@/shared/hooks'
@@ -41,7 +41,7 @@ export const DeckTable = ({ cards, isAuthor }: DeckTableProps) => {
     const { answerCover, questionCover, updated } = processCardData(el)
 
     return (
-      <TableRow key={el.id}>
+      <Tr key={el.id}>
         <PositionCell content={el.question} entity={'Question'} image={questionCover} />
         <PositionCell content={el.answer} entity={'Answer'} image={answerCover} />
         <PositionCell content={updated} />
@@ -58,14 +58,14 @@ export const DeckTable = ({ cards, isAuthor }: DeckTableProps) => {
             />
           </PositionCell>
         )}
-      </TableRow>
+      </Tr>
     )
   })
 
   return (
-    <TableContainer>
-      <TableHeader>
-        <TableRow>
+    <Table>
+      <Thead>
+        <Tr>
           <HeaderCell
             className={s.column1}
             content={'Question'}
@@ -95,9 +95,9 @@ export const DeckTable = ({ cards, isAuthor }: DeckTableProps) => {
             sortId={sortId}
           />
           {isAuthor && <HeaderCell className={s.column5} content={'Actions'} sortable={false} />}
-        </TableRow>
-      </TableHeader>
-      <TableBody>{TableContent}</TableBody>
+        </Tr>
+      </Thead>
+      <Tbody>{TableContent}</Tbody>
       {showUpdateCardDialogForm && (
         <CardDialogForm
           action={DIALOG_ACTION.UPDATE}
@@ -113,6 +113,6 @@ export const DeckTable = ({ cards, isAuthor }: DeckTableProps) => {
         onOpenChange={setShowDeleteCardDialogForm}
         open={showDeleteCardDialogForm}
       />
-    </TableContainer>
+    </Table>
   )
 }

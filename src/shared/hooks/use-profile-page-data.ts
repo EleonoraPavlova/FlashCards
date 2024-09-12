@@ -10,6 +10,8 @@ import {
 } from '@/services'
 import { PATH } from '@/shared/enums'
 
+import { getErrorMessageData } from '../utils'
+
 export const useProfilePageData = () => {
   const { data: user, isFetching } = useMeQuery()
   const [isEditMode, setIsEditMode] = useState(false)
@@ -21,19 +23,28 @@ export const useProfilePageData = () => {
   const navigate = useNavigate()
 
   const logoutHandler = () => {
-    try {
-      logout()
-      toast.success('You logout successfully')
-    } catch {
-      toast.error('Something went wrong') //todo: doesn't work offline mode
-    }
+    logout()
+      .unwrap()
+      .then(() => toast.success('You logout successfully'))
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+      })
   }
 
-  const uploadHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+  const uploadHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length) {
       const file = e.target.files[0]
 
-      await updateUser({ avatar: file })
+      updateUser({ avatar: file })
+        .unwrap()
+        .then(() => toast.success('Avatar has been successfully changed'))
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
+        })
     }
   }
 
@@ -43,32 +54,51 @@ export const useProfilePageData = () => {
 
   const deleteAvatarHandler = () => {
     updateUser({ avatar: '' })
+      .unwrap()
+      .then(() => toast.success('Avatar has been successfully deleted'))
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+      })
   }
 
-  const saveNameHandler = async (data: { nickname: string }) => {
+  const saveNameHandler = (data: { nickname: string }) => {
     const { nickname } = data
 
     if (nickname === user?.name) {
-      toast.info('No changes detected')
       setIsEditMode(false)
+      toast.info('No changes detected')
 
       return
     }
 
-    await updateUser({ name: nickname })
-    setIsEditMode(false)
+    updateUser({ name: nickname })
+      .unwrap()
+      .then(() => {
+        toast.success('Name has been successfully changed')
+        setIsEditMode(false)
+      })
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+      })
   }
 
   const cancelPersonalInfoHandler = () => {
-    // e.preventDefault()
     setIsEditMode(false)
   }
 
-  const deleteUserHandler = async () => {
-    await deleteUser()
-      .then(() => navigate(PATH.SIGN_IN))
+  const deleteUserHandler = () => {
+    deleteUser()
+      .unwrap()
+      .then(() => {
+        toast.success('User was deleted successfully')
+        navigate(PATH.SIGN_IN)
+      })
       .catch(e => {
-        toast.error(`User wasn't deleted, ${e}`)
+        toast.error(`User wasn't deleted, ${e.error}`)
       })
   }
 

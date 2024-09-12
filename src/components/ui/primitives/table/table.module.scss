@@ -8,7 +8,7 @@
   border-width: 0 var(--border-width-s) var(--border-width-s);
 }
 
-.tableRow {
+.Tr {
   display: table-row;
   width: 100%;
 
@@ -18,7 +18,7 @@
 }
 
 .headerCell,
-.tableCell {
+.Td {
   padding: 6px 24px;
   text-align: left;
   border-bottom: var(--border-width-s) solid var(--color-dark-500);

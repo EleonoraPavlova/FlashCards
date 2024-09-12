@@ -18,7 +18,7 @@ import { Nullable } from '@/shared/types/common'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { ControlledCheckbox } from '@/shared/ui/form-components/controlled-checkbox'
 import { ControlledTextField } from '@/shared/ui/form-components/controlled-text-field'
-import { revokeObjectURL } from '@/shared/utils'
+import { getErrorMessageData, revokeObjectURL } from '@/shared/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -112,20 +112,36 @@ export const DeckDialogForm = ({
     if (action === DIALOG_ACTION.CREATE) {
       createDeck({
         ...finalFormData,
-      }).then(() => {
-        if (Number(currentPage) !== 1) {
-          updateSearchParam({ currentPage: 1 })
-        }
-        setCover(null)
-        cancelFormHandler()
-        reset()
       })
+        .unwrap()
+        .then(() => {
+          if (Number(currentPage) !== 1) {
+            updateSearchParam({ currentPage: 1 })
+          }
+          setCover(null)
+          cancelFormHandler()
+          reset()
+          toast.success(`${formData.name} deck was successfully created`)
+        })
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
+        })
     } else {
-      updateDeck({ ...finalFormData, id }).then(() => {
-        setCover(null)
-        cancelFormHandler()
-        reset()
-      })
+      updateDeck({ ...finalFormData, id })
+        .unwrap()
+        .then(() => {
+          toast.success('Deck was successfully updated')
+          setCover(null)
+          cancelFormHandler()
+          reset()
+        })
+        .catch(e => {
+          const errors = getErrorMessageData(e)
+
+          toast.error(errors as any)
+        })
     }
   })
 

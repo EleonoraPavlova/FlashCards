@@ -1,18 +1,17 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import { Typography } from '@/components/ui/primitives'
 import clsx from 'clsx'
 
 import s from './table.module.scss'
 
-import { Typography } from '../typography'
-
-type TableContainerProps = {
+type TableProps = {
   label?: string
 } & ComponentPropsWithoutRef<'table'>
 
-type TableContainerRef = ElementRef<'table'>
+type TableRef = ElementRef<'table'>
 
-const TableContainer = forwardRef<TableContainerRef, TableContainerProps>((props, ref) => {
+const Table = forwardRef<TableRef, TableProps>((props, ref) => {
   const { children, className, ...rest } = props
   const cn = clsx(s.table, className)
 
@@ -23,10 +22,10 @@ const TableContainer = forwardRef<TableContainerRef, TableContainerProps>((props
   )
 })
 
-type TableHeaderProps = ComponentPropsWithoutRef<'thead'>
-type TableHeaderRef = ElementRef<'thead'>
+type TheadProps = ComponentPropsWithoutRef<'thead'>
+type TheadRef = ElementRef<'thead'>
 
-const TableHeader = forwardRef<TableHeaderRef, TableHeaderProps>((props, ref) => {
+const Thead = forwardRef<TheadRef, TheadProps>((props, ref) => {
   const { children, className, ...rest } = props
   const cn = clsx(className)
 
@@ -37,12 +36,12 @@ const TableHeader = forwardRef<TableHeaderRef, TableHeaderProps>((props, ref) =>
   )
 })
 
-type TableRowProps = ComponentPropsWithoutRef<'tr'>
-type TableRowRef = ElementRef<'tr'>
+type TrProps = ComponentPropsWithoutRef<'tr'>
+type TrRef = ElementRef<'tr'>
 
-const TableRow = forwardRef<TableRowRef, TableRowProps>((props, ref) => {
+const Tr = forwardRef<TrRef, TrProps>((props, ref) => {
   const { children, className, ...rest } = props
-  const cn = clsx(s.tableRow, className)
+  const cn = clsx(s.Tr, className)
 
   return (
     <tr className={cn} ref={ref} {...rest}>
@@ -51,10 +50,10 @@ const TableRow = forwardRef<TableRowRef, TableRowProps>((props, ref) => {
   )
 })
 
-type TableHeaderCellProps = ComponentPropsWithoutRef<'th'>
-type TableHeaderCellRef = ElementRef<'th'>
+type ThProps = ComponentPropsWithoutRef<'th'>
+type ThRef = ElementRef<'th'>
 
-const TableHeaderCell = forwardRef<TableHeaderCellRef, TableHeaderCellProps>((props, ref) => {
+const Th = forwardRef<ThRef, ThProps>((props, ref) => {
   const { children, className, ...rest } = props
   const cn = clsx(s.headerCell, className)
 
@@ -67,12 +66,12 @@ const TableHeaderCell = forwardRef<TableHeaderCellRef, TableHeaderCellProps>((pr
   )
 })
 
-type TableBodyProps = ComponentPropsWithoutRef<'tbody'>
-type TableBodyRef = ElementRef<'tbody'>
+type TbodyProps = ComponentPropsWithoutRef<'tbody'>
+type TbodyRef = ElementRef<'tbody'>
 
-const TableBody = forwardRef<TableBodyRef, TableBodyProps>((props, ref) => {
+const Tbody = forwardRef<TbodyRef, TbodyProps>((props, ref) => {
   const { children, className, ...rest } = props
-  const cn = clsx(s.tableCell, className)
+  const cn = clsx(s.Td, className)
 
   return (
     <tbody className={cn} ref={ref} {...rest}>
@@ -81,12 +80,12 @@ const TableBody = forwardRef<TableBodyRef, TableBodyProps>((props, ref) => {
   )
 })
 
-type TableCellProps = ComponentPropsWithoutRef<'td'>
-type TableCellRef = ElementRef<'td'>
+type TdProps = ComponentPropsWithoutRef<'td'>
+type TdRef = ElementRef<'td'>
 
-const TableCell = forwardRef<TableCellRef, TableCellProps>((props, ref) => {
+const Td = forwardRef<TdRef, TdProps>((props, ref) => {
   const { children, className, ...rest } = props
-  const cn = clsx(s.tableCell, className)
+  const cn = clsx(s.Td, className)
 
   return (
     <td className={cn} ref={ref} {...rest}>
@@ -95,4 +94,4 @@ const TableCell = forwardRef<TableCellRef, TableCellProps>((props, ref) => {
   )
 })
 
-export { TableBody, TableCell, TableContainer, TableHeader, TableHeaderCell, TableRow }
+export { Table, Tbody, Td, Th, Thead, Tr }

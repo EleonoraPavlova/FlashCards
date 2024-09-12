@@ -3,13 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { DeckDialogForm, DeleteDialogForm } from '@/components/forms'
 import { Actions } from '@/components/ui/layout-components/actions'
-import {
-  Button,
-  TableBody,
-  TableContainer,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/primitives'
+import { Button, Table, Tbody, Thead, Tr } from '@/components/ui/primitives'
 import { User } from '@/services'
 import { Deck } from '@/services/decks/deck.types'
 import { DIALOG_ACTION, DIALOG_ENTITY, VARIANT } from '@/shared/enums'
@@ -45,11 +39,11 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
     updateSearchParam({ currentPage: 1, orderBy })
   }
 
-  const tableRows = decks.map(el => {
+  const TableRows = decks.map(el => {
     const { cardsCount, cover, deckPath, isAuthor, learnDeckPath, updated } = processDeckData(el)
 
     return (
-      <TableRow key={el.id}>
+      <Tr key={el.id}>
         <PositionCell entity={'Deck'} image={cover}>
           <Button
             as={Link}
@@ -74,46 +68,48 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
             variant={isAuthor ? VARIANT.ALL : VARIANT.ONLY_LEARN}
           />
         </PositionCell>
-      </TableRow>
+      </Tr>
     )
   })
 
   return (
-    <TableContainer style={{ maxWidth: '1280px' }}>
-      <TableHeader>
-        <TableRow>
-          <HeaderCell
-            className={s.column1}
-            content={'Name'}
-            id={'name'}
-            onSort={sortHandler}
-            sortId={sortId}
-          />
-          <HeaderCell
-            className={s.column2}
-            content={'Cards'}
-            id={'cardsCount'}
-            onSort={sortHandler}
-            sortId={sortId}
-          />
-          <HeaderCell
-            className={s.column3}
-            content={'Last Updated'}
-            id={'updated'}
-            onSort={sortHandler}
-            sortId={sortId}
-          />
-          <HeaderCell
-            className={s.column4}
-            content={'Created by'}
-            id={'author.name'}
-            onSort={sortHandler}
-            sortId={sortId}
-          />
-          <HeaderCell className={s.column5} content={'Actions'} sortable={false} />
-        </TableRow>
-      </TableHeader>
-      <TableBody>{tableRows}</TableBody>
+    <>
+      <Table style={{ maxWidth: '1280px' }}>
+        <Thead>
+          <Tr>
+            <HeaderCell
+              className={s.column1}
+              content={'Name'}
+              id={'name'}
+              onSort={sortHandler}
+              sortId={sortId}
+            />
+            <HeaderCell
+              className={s.column2}
+              content={'Cards'}
+              id={'cardsCount'}
+              onSort={sortHandler}
+              sortId={sortId}
+            />
+            <HeaderCell
+              className={s.column3}
+              content={'Last Updated'}
+              id={'updated'}
+              onSort={sortHandler}
+              sortId={sortId}
+            />
+            <HeaderCell
+              className={s.column4}
+              content={'Created by'}
+              id={'author.name'}
+              onSort={sortHandler}
+              sortId={sortId}
+            />
+            <HeaderCell className={s.column5} content={'Actions'} sortable={false} />
+          </Tr>
+        </Thead>
+        <Tbody>{TableRows}</Tbody>
+      </Table>
       {showEditDeckDialog && (
         <DeckDialogForm
           action={DIALOG_ACTION.UPDATE}
@@ -129,6 +125,6 @@ export const DeckListTable = ({ decks, user }: DecksListTableProps) => {
         onOpenChange={setShowDeleteDeckDialog}
         open={showDeleteDeckDialog}
       />
-    </TableContainer>
+    </>
   )
 }

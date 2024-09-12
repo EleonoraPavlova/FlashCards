@@ -4,7 +4,6 @@ import { Link, generatePath, useParams } from 'react-router-dom'
 import { ArrowBackOutline } from '@/assets/icons'
 import { LearnCard } from '@/components/ui/layout-components'
 import { Button } from '@/components/ui/primitives'
-import { cn } from '@/pages/card-page/card-page.styles'
 import {
   GetRandomCardToLearnResponse,
   useGetDeckQuery,
@@ -14,6 +13,8 @@ import {
 import { PATH } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
+
+import { cn } from './card-page.styles'
 
 export const CardPage = () => {
   const { deckId } = useParams()
@@ -35,13 +36,13 @@ export const CardPage = () => {
 
   const [saveGrade, { isLoading: isSaveGradeLoading }] = useSaveGradeOfCardMutation()
 
-  const nextQuestionHandler = async (cardId: string, grade: number) => {
-    const result = await saveGrade({ cardId, grade, id: deck?.id ?? '' })
-
-    if (result) {
-      setShowAnswer(false)
-      setCardToLearn(result.data)
-    }
+  const nextQuestionHandler = (cardId: string, grade: number) => {
+    saveGrade({ cardId, grade, id: deck?.id ?? '' })
+      .unwrap()
+      .then(data => {
+        setShowAnswer(false)
+        setCardToLearn(data)
+      })
   }
 
   const isLoad = isDeckFetching || isRandomCardFetching || isSaveGradeLoading

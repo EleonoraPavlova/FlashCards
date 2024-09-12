@@ -1,6 +1,6 @@
 import { ChangeEvent, useCallback, useMemo } from 'react'
 
-import { useSearchParamUpdater } from '@/shared/hooks/use-search-param-updater'
+import { useSearchParamUpdater } from '@/shared/hooks'
 import { Tab } from '@/shared/types/common'
 import { useDebounceCallback } from 'usehooks-ts'
 

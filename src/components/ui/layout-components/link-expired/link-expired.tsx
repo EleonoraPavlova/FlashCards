@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 
-import { cn } from '@/components/ui/layout-components/link-expired/link-expired.styles'
 import { Button, Card, Typography } from '@/components/ui/primitives'
 import { PATH } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
+
+import { cn } from './link-expired.styles'
 
 export const LinkExpired = () => {
   return (
@@ -15,8 +16,8 @@ export const LinkExpired = () => {
           once or it expired due to security reasons
         </Typography>
       </FlexContainer>
-      <Button as={Link} path={PATH.PROFILE} type={'button'}>
-        {'Back to profile'}
+      <Button as={Link} to={PATH.PROFILE} type={'button'}>
+        Back to profile
       </Button>
     </Card>
   )
