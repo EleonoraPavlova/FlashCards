@@ -15,6 +15,7 @@ import {
   HeartOutline,
   ImageOutline,
   LogOut,
+  LogoOutline,
   MenuOutline,
   MoreVerticalOutline,
   PersonOutline,
@@ -57,4 +58,5 @@ export const iconList: Icon[] = [
   { component: <MoreVerticalOutline />, name: 'more vertical outline' },
   { component: <HeartOutline className={cn.heart} />, name: 'heart outline' },
   { component: <Heart className={cn.heart} />, name: 'heart' },
+  { component: <LogoOutline className={cn.icon} />, name: 'logo' },
 ]

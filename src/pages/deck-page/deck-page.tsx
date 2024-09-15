@@ -71,7 +71,6 @@ export const DeckPage = () => {
   }
 
   const isLoad = isFetchingCards || isFetchingDeck
-
   const isEmpty = cards.length === 0 && !search && !isLoadingCards
 
   return (
@@ -82,7 +81,12 @@ export const DeckPage = () => {
           Back to Decks List
         </Button>
         <FlexContainer ai={'start'} fd={fd} gap={gap} jc={'start'}>
-          <DeckTitle deck={deck} isAuthor={isAuthor} learnDeckPath={learnDeckPath} />
+          <DeckTitle
+            cardsData={cardsData ?? undefined}
+            deck={deck}
+            isAuthor={isAuthor}
+            learnDeckPath={learnDeckPath}
+          />
           {!isEmpty && (
             <>
               {isAuthor ? (

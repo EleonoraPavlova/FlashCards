@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import { IncubatorLogo, IncubatorLogoSmall } from '@/assets/icons'
+import { Logo } from '@/components/ui/design-system/logo'
 import { UserProfile } from '@/components/ui/layout-components'
 import { Button } from '@/components/ui/primitives'
 import { User } from '@/services'
@@ -25,7 +25,7 @@ export const CardsHeader = ({ isAuth, userData, ...props }: CardsHeaderProps) =>
     <Header {...props}>
       <FlexContainer jc={'space-between'} pd={'0 20px'}>
         <Button as={Link} title={'Return to main page'} to={PATH.DECK_LIST} variant={'icon'}>
-          {isMobile ? <IncubatorLogoSmall /> : <IncubatorLogo />}
+          <Logo isMobile={isMobile} />
         </Button>
         <UserProfile isAuth={isAuth} userData={userData} />
       </FlexContainer>

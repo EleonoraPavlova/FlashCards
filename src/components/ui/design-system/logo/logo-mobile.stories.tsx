@@ -1,14 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IncubatorLogoSmall as IncubatorLogoSmallComponent } from '@/assets/icons'
+import { Logo as LogoComponent } from './logo'
 
 const meta = {
   argTypes: {},
-  component: IncubatorLogoSmallComponent,
-  title: 'Design System/Incubator Logo For Mobile',
-} satisfies Meta<typeof IncubatorLogoSmallComponent>
+  component: LogoComponent,
+  title: 'Design System/Logo For Mobile',
+} satisfies Meta<typeof LogoComponent>
 
 type Story = StoryObj<typeof meta>
 export default meta
 
-export const IncubatorLogoForMobile: Story = {}
+export const LogoForMobile: Story = {
+  args: {
+    isMobile: true,
+  },
+}

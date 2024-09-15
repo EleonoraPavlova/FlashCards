@@ -23,7 +23,7 @@ export const LearnCardQuestion = ({ question, questionImg, shots }: CardPageQues
       {questionImg && <Image alt={'Question'} ratio={RATIO.L} src={questionImg} variant={'l'} />}
       <FlexContainer>
         <Typography as={'span'} className={cn.triesText} gray variant={'body2'}>
-          Количество попыток ответов на вопрос:&nbsp;
+          Number of attempts to answer the question:&nbsp;
           <Typography as={'span'} className={cn.triesCount} gray variant={'subtitle2'}>
             {shots}
           </Typography>

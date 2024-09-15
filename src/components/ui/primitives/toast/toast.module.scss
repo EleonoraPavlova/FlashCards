@@ -1,3 +1,14 @@
 .toast {
+  margin-left: auto;
   font-style: var(--font-family-primary);
+
+  @media screen and (width <= 320px) {
+    width: 70%;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (width <= 480px) {
+    width: 70%;
+    margin-bottom: 10px;
+  }
 }

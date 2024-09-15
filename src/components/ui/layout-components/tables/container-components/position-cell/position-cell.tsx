@@ -23,8 +23,16 @@ export const PositionCell = forwardRef<PositionCellRef, Props>(
     return (
       <Td {...props} ref={ref}>
         <FlexContainer fw={isTabletScreen ? 'wrap' : 'nowrap'} gap={'10px'} jc={jc}>
-          {image && <Image alt={`${entity}'s image`} ratio={RATIO.S} src={image} variant={'s'} />}
-          {content} {children}
+          {image && (
+            <Image
+              alt={`${entity ? entity : 'entity'}'s image`}
+              ratio={RATIO.S}
+              src={image}
+              variant={'s'}
+            />
+          )}
+          {content && <span>{content}</span>}
+          {children}
         </FlexContainer>
       </Td>
     )

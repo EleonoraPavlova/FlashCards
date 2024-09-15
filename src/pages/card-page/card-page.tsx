@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, generatePath, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { ArrowBackOutline } from '@/assets/icons'
 import { LearnCard } from '@/components/ui/layout-components'
@@ -13,6 +14,7 @@ import {
 import { PATH } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { Page } from '@/shared/ui/page'
+import { getErrorMessageData } from '@/shared/utils'
 
 import { cn } from './card-page.styles'
 
@@ -42,6 +44,12 @@ export const CardPage = () => {
       .then(data => {
         setShowAnswer(false)
         setCardToLearn(data)
+        toast.success(`You've saved grade ${grade} successfully`)
+      })
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
       })
   }
 

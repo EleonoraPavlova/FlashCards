@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '@/components/ui/primitives/button'
-import { Card } from '@/components/ui/primitives/card'
-import { Typography } from '@/components/ui/primitives/typography'
+import { Button, Card, Typography } from '@/components/ui/primitives'
+import { FlexContainer } from '@/shared/ui/flex-container'
 
 const meta = {
   argTypes: {
@@ -31,16 +30,18 @@ export const CardSample: Story = {
 export const CardWithQuestion = () => {
   return (
     <Card style={{ width: '420px' }}>
-      <Typography as={'h1'} variant={'h1'}>
-        Learn &quot;Deck Name&quot;
-      </Typography>
-      <Typography variant={'subtitle1'}>
-        Question: How &quot;This&quot; works in JavaScript?
-      </Typography>
-      <Typography style={{ marginBottom: '10px' }}>
-        Количество попыток ответов на вопрос: 10
-      </Typography>
-      <Button fullWidth>Show Answer</Button>
+      <FlexContainer fd={'column'} gap={'14px'}>
+        <Typography as={'h1'} variant={'h1'}>
+          Learn &quot;Deck Name&quot;
+        </Typography>
+        <Typography variant={'subtitle1'}>
+          Question: How &quot;This&quot; works in JavaScript?
+        </Typography>
+        <Typography style={{ marginBottom: '10px' }}>
+          Number of attempts to answer the question: 10
+        </Typography>
+        <Button fullWidth>Show Answer</Button>
+      </FlexContainer>
     </Card>
   )
 }
