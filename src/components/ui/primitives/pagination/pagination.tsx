@@ -96,7 +96,7 @@ export const Pagination = ({
         <ArrowBack className={cn.arrowRight} />
       </Button>
       <Typography as={'span'} className={cn.nowrap}>
-        Показать
+        Show
       </Typography>
       <Select
         className={cn.select}
@@ -105,7 +105,7 @@ export const Pagination = ({
         value={`${pageSize}`}
       />
       <Typography as={'span'} className={cn.nowrap}>
-        на странице
+        on the page
       </Typography>
     </div>
   )
