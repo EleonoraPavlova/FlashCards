@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+import { toast } from 'react-toastify'
 
 import { EditOutline, EmailOk, LogOut, TrashOutline } from '@/assets/icons'
 import { CheckEmail, VerifyHint } from '@/components/ui/layout-components'
@@ -7,6 +8,7 @@ import { User, useResendVerifyEmailMutation } from '@/services'
 import { SCREEN_SIZE } from '@/shared/enums'
 import { useCurrentScreenWidth } from '@/shared/hooks'
 import { FlexContainer } from '@/shared/ui/flex-container'
+import { getErrorMessageData } from '@/shared/utils'
 
 import { cn } from './personal-info.styles'
 
@@ -36,6 +38,14 @@ export const PersonalInfo = ({
 
   const resendVerifyEmailHandler = () => {
     resendVerifyEmail({ userId: id })
+      .unwrap()
+      .then(() => toast.success(`${name}, the letter has been resend to your email`))
+      .catch(e => {
+        const errors = getErrorMessageData(e)
+
+        toast.error(errors as any)
+        toast.info('Reload the page')
+      })
   }
 
   if (isSuccess) {

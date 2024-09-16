@@ -85,6 +85,11 @@
     font-size: var(--font-size-xs);
     line-height: var(--line-height-s);
   }
+
+  @media screen and (width <= 480px) {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-s);
+  }
 }
 
 .caption,
