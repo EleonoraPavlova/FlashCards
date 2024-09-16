@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { MemoryRouter } from 'react-router-dom'
 
-import { Pagination as PaginationComponent } from '@/components/ui/primitives/pagination'
+import { Pagination as PaginationComponent } from '@/components/ui/primitives'
 
 const meta = {
   argTypes: {},

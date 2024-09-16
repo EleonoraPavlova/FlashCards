@@ -1,10 +1,10 @@
 // --------- CardData example for story: ---------
 
-import { Card } from '@/services/cards/cards.types'
+import { Card } from '@/services/cards'
 
 export const CardListExample: Card[] = [
   {
-    answer: 'Венера',
+    answer: 'Venus',
     answerImg:
       'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/ce43fa80-a18d-4d3e-96ce-224013c8c47a-venera.jpeg',
     answerVideo: null,
@@ -12,7 +12,7 @@ export const CardListExample: Card[] = [
     deckId: 'cllh0dc0f0311vo2q8vltxd63',
     grade: 0,
     id: 'cllh1c2480322vo2qtak3exd8',
-    question: 'Самая горячая планета?',
+    question: 'The hottest planet?',
     questionImg:
       'https://andrii-flashcards.s3.eu-central-1.amazonaws.com/dcea5671-d26d-486c-97a8-750853d7b405-hot.jpg',
     questionVideo: null,
@@ -21,14 +21,14 @@ export const CardListExample: Card[] = [
     userId: 'bb18bbe9-c369-40d1-bfdf-acddf5877a53',
   },
   {
-    answer: 'Сатурн, Юпитер, Уран, Нептун',
+    answer: 'Saturn, Jupiter, Uranus, Neptune',
     answerImg: null,
     answerVideo: null,
     created: '2023-08-18T20:14:27.307Z',
     deckId: 'cllh0dc0f0311vo2q8vltxd63',
     grade: 0,
     id: 'cllh140ry031qvo2q6239ud7g',
-    question: 'Какие планеты имеют кольца?',
+    question: 'Which planets have rings?',
     questionImg: null,
     questionVideo: null,
     shots: 0,
@@ -36,14 +36,14 @@ export const CardListExample: Card[] = [
     userId: 'bb18bbe9-c369-40d1-bfdf-acddf5877a53',
   },
   {
-    answer: 'Нептун',
+    answer: 'Neptune',
     answerImg: null,
     answerVideo: null,
     created: '2023-08-18T20:17:56.773Z',
     deckId: 'cllh0dc0f0311vo2q8vltxd63',
     grade: 5,
     id: 'cllh18ieg031uvo2q23aed7af',
-    question: 'Самая холодная планета?',
+    question: 'The coldest planet?',
     questionImg: null,
     questionVideo: null,
     shots: 1,
@@ -51,14 +51,14 @@ export const CardListExample: Card[] = [
     userId: 'bb18bbe9-c369-40d1-bfdf-acddf5877a53',
   },
   {
-    answer: 'ываываываываы',
+    answer: 'Earth',
     answerImg: null,
     answerVideo: null,
     created: '2023-08-29T16:10:43.371Z',
     deckId: 'cllh0dc0f0311vo2q8vltxd63',
     grade: 0,
     id: 'cllwi8y7i0b9mvo2qb8yev01i',
-    question: 'цукцукцу',
+    question: 'The most watery planet?',
     questionImg: null,
     questionVideo: null,
     shots: 0,
@@ -66,14 +66,14 @@ export const CardListExample: Card[] = [
     userId: 'bb18bbe9-c369-40d1-bfdf-acddf5877a53',
   },
   {
-    answer: 'Юпитер',
+    answer: 'Jupiter',
     answerImg: null,
     answerVideo: null,
     created: '2023-08-18T20:07:51.776Z',
     deckId: 'cllh0dc0f0311vo2q8vltxd63',
     grade: 0,
     id: 'cllh0vjkz031dvo2qvc13xvv5',
-    question: 'Самая большая планета?',
+    question: 'The biggest planet?',
     questionImg: null,
     questionVideo: null,
     shots: 0,
