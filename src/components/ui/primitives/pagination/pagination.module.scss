@@ -11,19 +11,25 @@
 .paginationOption {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   width: var(--icon-size-xl);
   height: var(--icon-size-xl);
-  padding: 0 8px;
+  padding: 0 4px;
 
   background-color: transparent;
   border-radius: var(--border-radius-xs);
   box-shadow: none;
 
-  transition: background-color var(--transition-duration-default) ease;
+  transition:
+    background-color var(--transition-duration-default) ease,
+    color var(--transition-duration-default) ease,
+    box-shadow var(--transition-duration-default) ease;
 
   &:not(.selected):hover {
+    color: var(--color-light-100);
     background-color: var(--color-dark-500);
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
   }
 
   &.disabled {
