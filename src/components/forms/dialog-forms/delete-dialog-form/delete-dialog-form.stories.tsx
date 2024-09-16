@@ -1,4 +1,5 @@
 import { Provider } from 'react-redux'
+import { MemoryRouter } from 'react-router-dom'
 
 import { DeleteDialogForm as DeleteDialogFormComponent } from '@/components/forms'
 import { mockUser } from '@/components/ui/primitives/dropdown/dropdown.mock'
@@ -27,9 +28,11 @@ export const DeleteDialogForm: Story = {
   },
   render: args => {
     return (
-      <Provider store={store}>
-        <DeleteDialogFormComponent {...args} />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <DeleteDialogFormComponent {...args} />
+        </Provider>
+      </MemoryRouter>
     )
   },
 }

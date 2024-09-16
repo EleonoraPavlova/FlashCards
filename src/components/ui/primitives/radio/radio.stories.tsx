@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Radio } from '@/components/ui/primitives'
+import { Radio as RadioComponent } from '@/components/ui/primitives'
 import { mockRadio3 } from '@/components/ui/primitives/radio/radio.mock'
 
 const meta = {
   argTypes: {
     disabled: { control: 'boolean' },
   },
-  component: Radio,
+  component: RadioComponent,
   tags: ['autodocs'],
-  title: 'Primitives/RadioGroup',
-} satisfies Meta<typeof Radio>
+  title: 'Primitives/Radio',
+} satisfies Meta<typeof RadioComponent>
 
 type Story = StoryObj<typeof meta>
 export default meta
 
-export const RadioWithNotFirstCheckedOption: Story = {
+export const Radio: Story = {
   args: {
     options: mockRadio3,
   },

@@ -26,7 +26,7 @@ const VerifyEmailCodeSchema = z.object({
   code: codeVerifySchema,
 })
 
-export const CheckEmail = ({ email, forRecoveryPassword }: CheckEmailProps) => {
+export const CheckEmail = ({ email, forRecoveryPassword, name }: CheckEmailProps) => {
   const {
     control,
     formState: { isDirty },
@@ -45,12 +45,13 @@ export const CheckEmail = ({ email, forRecoveryPassword }: CheckEmailProps) => {
       .unwrap()
       .then(() => {
         navigate(PATH.ROOT)
-        toast.success('Verification was successly')
+        toast.success(`${name}, the verification was successful`)
       })
       .catch(e => {
         const errors = getErrorMessageData(e)
 
         toast.error(errors as any)
+        debugger
       })
   })
 
@@ -65,7 +66,7 @@ export const CheckEmail = ({ email, forRecoveryPassword }: CheckEmailProps) => {
         <CheckEmailIcon className={cn.icon} />
         <Typography
           className={cn.reminder}
-        >{`We've sent an Email with instructions to \n${email}`}</Typography>
+        >{`We've sent an email with instructions to \n${email}`}</Typography>
         {!forRecoveryPassword && (
           <form className={cn.form} onSubmit={formHandler}>
             <ControlledTextField
