@@ -3,7 +3,7 @@
 React + TypeScript SPA + Vite 🚀
 
 ### Links:
-> [Quizlet-Cards](https://quizlet-pavlova.vercel.app/sign-in) - web application
+> [Quizlet-Cards](https://quizlet-pavlova.vercel.app) - web application
 > 
 > [UI-kit](https://storybook-quizlet-pavlova.vercel.app) on Storybook
 
