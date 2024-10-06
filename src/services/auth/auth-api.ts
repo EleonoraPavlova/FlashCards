@@ -19,7 +19,6 @@ export const authApi = flashcardsApi.injectEndpoints({
   endpoints: builder => {
     return {
       createUser: builder.mutation<CreateUserResponse, CreateUserArgs>({
-        // onQueryStarted: pessimisticUpdateAuth,
         query: args => {
           const { email, name, password } = args
 

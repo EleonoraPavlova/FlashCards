@@ -51,7 +51,6 @@ export const CheckEmail = ({ email, forRecoveryPassword, name }: CheckEmailProps
         const errors = getErrorMessageData(e)
 
         toast.error(errors as any)
-        debugger
       })
   })
 
