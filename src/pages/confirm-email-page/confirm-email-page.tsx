@@ -21,7 +21,7 @@ export const ConfirmEmailPage = () => {
           toast.success('Email verified successfully')
         })
     }
-  }, [token])
+  }, [token, verifyEmail])
 
   return (
     <Page load={isLoading}>

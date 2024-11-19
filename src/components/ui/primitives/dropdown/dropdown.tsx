@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './dropdown.module.scss'
 

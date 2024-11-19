@@ -1,11 +1,9 @@
 import { ComponentPropsWithoutRef, ElementType, ForwardedRef, forwardRef } from 'react'
 
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './button.module.scss'
 
-// If T matches ElementType then we return T, otherwise Never (nothing).
-// https://medium.com/@developer.olly/understanding-typescript-infer-ac42bd018f3
 type InferType<T> = T extends ElementType<infer U> ? U : never
 
 type Props<T extends ElementType = 'button'> = {

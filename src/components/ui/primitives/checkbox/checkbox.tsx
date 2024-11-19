@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 import { Typography } from '@/components/ui/primitives'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import { CheckIcon } from '@radix-ui/react-icons'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from '@/components/ui/primitives/checkbox/checkbox.module.scss'
 

@@ -1,7 +1,7 @@
 import { CSSProperties, ComponentPropsWithoutRef } from 'react'
 
 import * as ProgressPrimitive from '@radix-ui/react-progress'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './progress.module.scss'
 

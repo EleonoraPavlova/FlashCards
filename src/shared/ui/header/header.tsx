@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Card } from '@/components/ui/primitives'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './header.module.scss'
 
