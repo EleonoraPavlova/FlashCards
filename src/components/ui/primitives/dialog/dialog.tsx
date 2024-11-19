@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ElementRef, HTMLAttributes, forwardRef } from
 
 import { FlexContainer } from '@/shared/ui/flex-container'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './dialog.module.scss'
 

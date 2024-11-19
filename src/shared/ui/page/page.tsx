@@ -1,7 +1,7 @@
 import { CSSProperties, ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Progress } from '@/components/ui/primitives'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './page.module.scss'
 

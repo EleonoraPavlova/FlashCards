@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Typography } from '@/components/ui/primitives'
 import { Tab } from '@/shared/types/common'
 import * as RadixTabs from '@radix-ui/react-tabs'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './tab-switcher.module.scss'
 

@@ -4,7 +4,7 @@ import { CloseOutline, EyeOffOutline, EyeOutline, SearchOutline } from '@/assets
 import { Button, Typography } from '@/components/ui/primitives'
 import { useSearchParamUpdater } from '@/shared/hooks'
 import { FlexContainer } from '@/shared/ui/flex-container'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './text-field.module.scss'
 

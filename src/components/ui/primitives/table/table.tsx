@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/components/ui/primitives'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './table.module.scss'
 

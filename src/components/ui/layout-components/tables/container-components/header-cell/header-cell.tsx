@@ -5,7 +5,7 @@ import { Th } from '@/components/ui/primitives'
 import { ORDER } from '@/shared/enums'
 import { FlexContainer } from '@/shared/ui/flex-container'
 import { getOrderByString } from '@/shared/utils'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './header-cell.module.scss'
 

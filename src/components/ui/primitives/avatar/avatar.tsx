@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 
 import * as RadixAvatar from '@radix-ui/react-avatar'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './avatar.module.scss'
 

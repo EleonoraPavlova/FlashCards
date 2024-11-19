@@ -2,7 +2,7 @@ import { CSSProperties, ComponentPropsWithoutRef, ElementRef, forwardRef } from 
 
 import { RATIO } from '@/shared/enums'
 import * as AspectRatio from '@radix-ui/react-aspect-ratio'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 import s from './image.module.scss'
 
